@@ -5,15 +5,16 @@ import javax.swing.*;
 public final class MainView extends JFrame {
     private final Notations notations = new Notations();
     private final Queue queue = new Queue(10);
-    private JPanel panel1;
+    private JPanel contenPane;
     private JComboBox options;
     private JButton continueButton;
     private JButton regresarButton;
+    private JPanel contentPane;
 
 
     public MainView() {
 
-        setContentPane(panel1);
+        setContentPane(contenPane);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
