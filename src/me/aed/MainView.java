@@ -12,7 +12,7 @@ public class MainView extends AbstractView {
     private JButton lab4Button;
 
     private JButton lab5Button;
-    private JButton laboratorio6Button;
+    private JButton lab6Button;
     private JButton salirButton;
     private JLabel resumen;
 
@@ -42,12 +42,17 @@ public class MainView extends AbstractView {
             new me.aed.lab5.MainView().setVisible(true);
         });
 
+        lab6Button.addActionListener(e -> {
+            dispose();
+            new me.aed.lab6.MainView().setVisible(true);
+        });
+
         salirButton.addActionListener(e -> dispose());
         addTooltip(lab1Button, resumen, "Implementación de actualizaciones (Inserción, Eliminación y Modificación");
         addTooltip(lab2Button, resumen, "Métodos de ordenación y Búsqueda");
         addTooltip(lab3Button, resumen, "Pilas y Colas");
         addTooltip(lab4Button, resumen, "Recursividad");
         addTooltip(lab5Button, resumen, "Array List");
-        addTooltip(laboratorio6Button, resumen, "");
+        addTooltip(lab6Button, resumen, "");
     }
 }
