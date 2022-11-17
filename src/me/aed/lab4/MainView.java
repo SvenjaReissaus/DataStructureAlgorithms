@@ -5,20 +5,19 @@ import javax.swing.*;
 public final class MainView extends JFrame {
     private final Notations notations = new Notations();
     private final Queue queue = new Queue(10);
-    private JPanel contenPane;
+    private JPanel contentPane;
     private JComboBox options;
     private JButton continueButton;
     private JButton regresarButton;
-    private JPanel contentPane;
 
 
     public MainView() {
 
-        setContentPane(contenPane);
+        setContentPane(contentPane);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
-        pack();
         setLocationRelativeTo(null);
+        pack();
 
 
         continueButton.addActionListener(e -> {
@@ -39,7 +38,7 @@ public final class MainView extends JFrame {
         final String expression = JOptionPane.showInputDialog("Ingrese la expresion matematica");
         final String[] options = {"Prefijo", "Postfijo"};
         final int option = JOptionPane.showOptionDialog(null, "Seleccione la opcion", "Opciones", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
-        JOptionPane.showMessageDialog(null, String.format("El resultado es: %s", option == 0 ? notations.toPrefix(expression) : notations.toPostfix(expression)));
+        JOptionPane.showMessageDialog(null, expression == null ? "No se especifico una expresion" : String.format("El resultado es: %s", option == 0 ? notations.toPrefix(expression) : notations.toPostfix(expression)));
     }
 
     private void piles() {
@@ -114,10 +113,6 @@ public final class MainView extends JFrame {
             JOptionPane.showMessageDialog(null, "El valor ingresado no es un número");
             return parseNumber(message);
         }
-    }
-
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
     }
 }
 
