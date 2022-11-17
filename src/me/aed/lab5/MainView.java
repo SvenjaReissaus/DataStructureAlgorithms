@@ -42,9 +42,9 @@ public final class MainView extends JFrame {
     public MainView() {
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
         setContentPane(contentPane);
         pack();
+        setLocationRelativeTo(null);
         exercise1.addActionListener(e -> clear(1));
         exercise2.addActionListener(e -> clear(2));
         exercise3.addActionListener(e -> clear(3));

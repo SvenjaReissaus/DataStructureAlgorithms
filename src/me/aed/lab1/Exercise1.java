@@ -19,8 +19,9 @@ public final class Exercise1 extends JFrame {
     public Exercise1() {
         setResizable(false);
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        setLocationRelativeTo(null);
         setContentPane(contentPane);
+        pack();
+        setLocationRelativeTo(null);
 
         backButton.addActionListener(e -> {
             dispose();

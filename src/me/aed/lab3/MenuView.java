@@ -16,8 +16,9 @@ public class MenuView extends JFrame {
     public MenuView() {
         setResizable(false);
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        setLocationRelativeTo(null);
         setContentPane(contentPane);
+        pack();
+        setLocationRelativeTo(null);
 
         backButton.addActionListener(e -> {
             dispose();

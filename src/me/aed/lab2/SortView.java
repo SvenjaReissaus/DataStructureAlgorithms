@@ -22,8 +22,9 @@ public class SortView extends JFrame {
     public SortView() {
         setResizable(false);
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        setLocationRelativeTo(null);
         setContentPane(contentPane);
+        pack();
+        setLocationRelativeTo(null);
 
         backButton.addActionListener(e -> {
             dispose();

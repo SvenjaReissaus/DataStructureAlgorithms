@@ -16,9 +16,9 @@ public final class MainView extends JFrame {
 
         setContentPane(contenPane);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
         setResizable(false);
         pack();
+        setLocationRelativeTo(null);
 
 
         continueButton.addActionListener(e -> {
