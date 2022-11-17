@@ -7,7 +7,7 @@ import static me.aed.shared.Strings.error;
 import static me.aed.shared.Strings.success;
 
 public final class Exercise1 extends JFrame {
-    final StudentFactory factory = new StudentFactory(new Student[10], 10);
+    final StudentFactory factory = new StudentFactory(new Student[10]);
     private JPanel contentPane;
     private JButton backButton;
     private JButton optionCreate;
@@ -58,7 +58,7 @@ public final class Exercise1 extends JFrame {
         }
     }
 
-    record StudentFactory(Student[] students, int size) {
+    record StudentFactory(Student[] students) {
         static final String HEADER = String.format("%-14s - %s - %s\n", "Nombre", "Cursos", "Promedio");
 
         /**
@@ -68,7 +68,7 @@ public final class Exercise1 extends JFrame {
          */
         int getSize() {
             int count = 0;
-            for (int i = 0; i < size; i++) if (students[i] != null) count++;
+            for (Student student : students) if (student != null) count++;
             return count;
         }
 
@@ -78,7 +78,7 @@ public final class Exercise1 extends JFrame {
          * @return Retorna la posicion posible a utilizar en el arreglo
          */
         int getNext() {
-            for (int i = 0; i < size; i++)
+            for (int i = 0; i < students.length; i++)
                 if (students[i] == null) return i;
             return -1;
         }
@@ -115,7 +115,7 @@ public final class Exercise1 extends JFrame {
             );
             if (target == null) return;
             // Eliminar el estudiante
-            for (int i = 0; i < size; i++)
+            for (int i = 0; i < students.length; i++)
                 // NPE fix
                 if (students[i] != null && Objects.equals(students[i].name, target)) {
                     students[i] = null;
@@ -136,7 +136,7 @@ public final class Exercise1 extends JFrame {
             );
             if (target == null) return;
             // Modificar el estudiante
-            for (int i = 0; i < size; i++)
+            for (int i = 0; i < students.length; i++)
                 // NPE fix
                 if (students[i] != null && Objects.equals(students[i].name, target)) {
                     final int studentCourses = Integer.parseInt(JOptionPane.showInputDialog("Introduzca la cantidad de cursos"));
@@ -162,10 +162,10 @@ public final class Exercise1 extends JFrame {
             );
             if (target == null) return;
             // Mostrar el estudiante
-            for (int i = 0; i < size; i++)
-                // NPE fix
-                if (students[i] != null && Objects.equals(students[i].name, target)) {
-                    JOptionPane.showMessageDialog(null, students[i], "Estudiante", JOptionPane.INFORMATION_MESSAGE);
+            // NPE fix
+            for (Student student : students)
+                if (student != null && Objects.equals(student.name, target)) {
+                    JOptionPane.showMessageDialog(null, student, "Estudiante", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 }
         }
