@@ -8,6 +8,7 @@
     <properties>
       <minimumSize width="750" height="450"/>
       <preferredSize width="750" height="450"/>
+      <requestFocusEnabled value="false"/>
     </properties>
     <border type="none"/>
     <children>

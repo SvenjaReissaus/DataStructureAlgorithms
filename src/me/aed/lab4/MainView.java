@@ -114,5 +114,9 @@ public final class MainView extends JFrame {
             return parseNumber(message);
         }
     }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+    }
 }
 
