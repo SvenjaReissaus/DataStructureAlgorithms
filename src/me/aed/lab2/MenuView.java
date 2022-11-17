@@ -6,6 +6,8 @@ import me.aed.MainView;
 import javax.swing.*;
 
 public class MenuView extends JFrame {
+    // Static cause dependency injection is not working ):
+    public static ArrayFactory factory = new ArrayFactory();
     private JPanel contentPane;
     private JButton backButton;
     private JButton searchButton;
@@ -60,7 +62,4 @@ public class MenuView extends JFrame {
 
         pack();
     }
-
-    // Static cause dependency injection is not working ):
-    public static ArrayFactory factory = new ArrayFactory();
 }

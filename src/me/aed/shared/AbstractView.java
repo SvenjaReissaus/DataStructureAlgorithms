@@ -16,6 +16,9 @@ import java.util.Objects;
 
 public abstract class AbstractView extends JFrame {
 
+    protected Icon editIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/edit.png")));
+    protected Icon deleteIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/delete.png")));
+
     public AbstractView() {
         this(null, WindowConstants.EXIT_ON_CLOSE);
     }
@@ -31,12 +34,9 @@ public abstract class AbstractView extends JFrame {
         setLocationRelativeTo(null);
     }
 
-    protected Icon editIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/edit.png")));
-
-    protected Icon deleteIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/delete.png")));
-
     protected void addTooltip(final JButton source, final JLabel target, final String tooltip) {
-        final String trimmed = tooltip.trim().subSequence(0, 38) + "...";
+        // grab maximum 30 characters from tooltip
+        final String trimmed = tooltip.trim().subSequence(0, Math.min(tooltip.length(), 38)) + "...";
         source.addFocusListener(new FocusAdapter() {
             public void focusGained(FocusEvent evt) {
                 target.setText(trimmed);
@@ -70,26 +70,24 @@ public abstract class AbstractView extends JFrame {
                     if (field.isAnnotationPresent(Required.class) && text.getText().isEmpty()) {
                         errors.put(field.getName(), "Este campo es requerido");
                         count++;
-                    }
-                    else if (field.isAnnotationPresent(StringLength.class))
+                    } else if (field.isAnnotationPresent(StringLength.class))
                         if (text.getText().length() < field.getAnnotation(StringLength.class).min()) {
                             errors.put(field.getName(), "Este campo debe tener al menos " + field.getAnnotation(StringLength.class).min() + " caracteres");
                             count++;
                         } else if (text.getText().length() > field.getAnnotation(StringLength.class).max()) {
                             errors.put(field.getName(), "Este campo debe tener como máximo " + field.getAnnotation(StringLength.class).max() + " caracteres");
                             count++;
-                        }
-                    else if (field.isAnnotationPresent(Number.class))
-                        if (!isNumber(text.getText())) {
-                            errors.put(field.getName(), "Este campo debe ser un número");
-                            count++;
-                        } else if (Integer.parseInt(text.getText()) < field.getAnnotation(Number.class).min()) {
-                            errors.put(field.getName(), "Este campo debe ser mayor o igual a " + field.getAnnotation(Number.class).min());
-                            count++;
-                        } else if (Integer.parseInt(text.getText()) > field.getAnnotation(Number.class).max()) {
-                            errors.put(field.getName(), "Este campo debe ser menor o igual a " + field.getAnnotation(Number.class).max());
-                            count++;
-                        }
+                        } else if (field.isAnnotationPresent(Number.class))
+                            if (!isNumber(text.getText())) {
+                                errors.put(field.getName(), "Este campo debe ser un número");
+                                count++;
+                            } else if (Integer.parseInt(text.getText()) < field.getAnnotation(Number.class).min()) {
+                                errors.put(field.getName(), "Este campo debe ser mayor o igual a " + field.getAnnotation(Number.class).min());
+                                count++;
+                            } else if (Integer.parseInt(text.getText()) > field.getAnnotation(Number.class).max()) {
+                                errors.put(field.getName(), "Este campo debe ser menor o igual a " + field.getAnnotation(Number.class).max());
+                                count++;
+                            }
                 } else if (component instanceof final JLabel label && field.isAnnotationPresent(ValidationFor.class))
                     label.setText(errors.getOrDefault(field.getAnnotation(ValidationFor.class).name(), ""));
             } catch (final IllegalAccessException e) {

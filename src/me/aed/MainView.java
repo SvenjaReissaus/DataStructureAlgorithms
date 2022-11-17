@@ -3,10 +3,6 @@ package me.aed;
 import me.aed.shared.AbstractView;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class MainView extends AbstractView {
     private JPanel contentPane;
@@ -19,7 +15,6 @@ public class MainView extends AbstractView {
     private JButton laboratorio6Button;
     private JButton salirButton;
     private JLabel resumen;
-    private JLabel resumen2;
 
     public MainView() {
         super("Algortimos y Estructuras de Datos");

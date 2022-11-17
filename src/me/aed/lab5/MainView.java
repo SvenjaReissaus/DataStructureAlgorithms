@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public final class MainView extends JFrame {
-    private int current = 0;
     private final ArrayListFactory<Student> students = new ArrayListFactory<>();
     private final EmployeeListFactory employees = new EmployeeListFactory();
     private final ArrayListFactory<Integer> numbers = new ArrayListFactory<>();
     private final ArrayListFactory<String> strings = new ArrayListFactory<>();
+    private int current = 0;
     private JPanel contentPane;
     private JButton exercise1;
     private JButton exercise2;

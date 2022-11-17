@@ -3,8 +3,6 @@ package me.aed.lab1;
 import me.aed.shared.AbstractView;
 
 import javax.swing.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public final class MenuView extends AbstractView { // extends AbstractView es la magia
     private JPanel contentPane;
