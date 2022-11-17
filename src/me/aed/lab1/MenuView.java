@@ -1,10 +1,12 @@
 package me.aed.lab1;
 
+import me.aed.shared.AbstractView;
+
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public final class MenuView extends JFrame {
+public final class MenuView extends AbstractView { // extends AbstractView es la magia
     private JPanel contentPane;
     private JButton ex1Button;
     private JButton ex2Button;
@@ -12,14 +14,11 @@ public final class MenuView extends JFrame {
     private JButton ex4Button;
     private JButton backButton;
     private JLabel resumen;
-    private JLabel resumen2;
 
     public MenuView() {
-        setResizable(false);
-        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        super("Laboratorio 1"); // podemos reemplazar 3 lineas de codigo por un super(), incluso incluir un titulo para la vista super("Mi titulo")
         setContentPane(contentPane);
         pack();
-        setLocationRelativeTo(null);
 
         backButton.addActionListener(e -> {
             dispose();
@@ -47,15 +46,8 @@ public final class MenuView extends JFrame {
         });
 
         pack();
-        ex1Button.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-            }
-            public void mouseEntered(MouseEvent e) {
-                resumen.setText("En una escuela se tienen que almacenar en arreglos los siguientes datos");
-                resumen2.setText("de los alumnos: nombre, edad, sexo, promedio de calificaciones, número de materias");
-            }
-        });
+        // addTooltip(variable que contineue al boton que se va a observar, variable que contineue el JLabel que se va a actualizar, texto como string);
+        addTooltip(ex1Button, resumen, "En una escuela se tienen que almacenar en arreglos los siguientes datos");
+        addTooltip(ex2Button, resumen, "No se que sigue");
     }
 }
