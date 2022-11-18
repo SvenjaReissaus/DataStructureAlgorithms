@@ -1,13 +1,14 @@
 package me.aed.lab2;
 
 import me.aed.SortMethods;
+import me.aed.shared.AbstractView;
 
 import javax.swing.*;
 import java.util.Arrays;
 
 import static me.aed.lab2.MenuView.factory;
 
-public class SortView extends JFrame {
+public class SortView extends AbstractView {
     private JPanel contentPane;
     private JButton backButton;
     private JButton sortButton;
@@ -20,11 +21,9 @@ public class SortView extends JFrame {
     private JButton unsortedButton;
 
     public SortView() {
-        setResizable(false);
-        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        super("Laboratorio 2");
         setContentPane(contentPane);
         pack();
-        setLocationRelativeTo(null);
 
         backButton.addActionListener(e -> {
             dispose();

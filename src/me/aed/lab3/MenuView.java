@@ -1,10 +1,12 @@
 package me.aed.lab3;
 
+import me.aed.shared.AbstractView;
+
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class MenuView extends JFrame {
+public class MenuView extends AbstractView {
     private JPanel contentPane;
     private JComboBox option;
     private JButton backButton;
@@ -14,11 +16,9 @@ public class MenuView extends JFrame {
     private JPanel operationState;
 
     public MenuView() {
-        setResizable(false);
-        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        super("Laboratorio 3");
         setContentPane(contentPane);
         pack();
-        setLocationRelativeTo(null);
 
         backButton.addActionListener(e -> {
             dispose();

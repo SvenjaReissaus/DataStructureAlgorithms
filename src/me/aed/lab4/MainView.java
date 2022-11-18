@@ -1,8 +1,10 @@
 package me.aed.lab4;
 
+import me.aed.shared.AbstractView;
+
 import javax.swing.*;
 
-public final class MainView extends JFrame {
+public final class MainView extends AbstractView {
     private final Notations notations = new Notations();
     private final Queue queue = new Queue(10);
     private JPanel contentPane;
@@ -12,13 +14,9 @@ public final class MainView extends JFrame {
 
 
     public MainView() {
-
+        super("Laboratorio 4");
         setContentPane(contentPane);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(false);
-        setLocationRelativeTo(null);
         pack();
-
 
         continueButton.addActionListener(e -> {
             switch (options.getSelectedIndex()) {

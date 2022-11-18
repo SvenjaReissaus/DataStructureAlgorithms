@@ -2,10 +2,11 @@ package me.aed.lab2;
 
 import me.aed.ArrayFactory;
 import me.aed.MainView;
+import me.aed.shared.AbstractView;
 
 import javax.swing.*;
 
-public class MenuView extends JFrame {
+public class MenuView extends AbstractView {
     // Static cause dependency injection is not working ):
     public static ArrayFactory factory = new ArrayFactory();
     private JPanel contentPane;
@@ -16,11 +17,9 @@ public class MenuView extends JFrame {
     private JButton continueButton;
 
     public MenuView() {
-        setResizable(false);
-        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        super("Laboratorio 2");
         setContentPane(contentPane);
         pack();
-        setLocationRelativeTo(null);
 
         if (factory.isInitialized()) {
             sizeField.setText(String.valueOf(factory.getSize()));

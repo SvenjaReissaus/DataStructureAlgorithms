@@ -1,12 +1,13 @@
 package me.aed.lab2;
 
 import me.aed.MainView;
+import me.aed.shared.AbstractView;
 
 import javax.swing.*;
 
 import static me.aed.lab2.MenuView.factory;
 
-public class SearchView extends JFrame {
+public class SearchView extends AbstractView {
     private JPanel contentPane;
     private JButton searchButton;
     private JTextField searchField;
@@ -15,11 +16,9 @@ public class SearchView extends JFrame {
     private JLabel notFound;
 
     public SearchView() {
-        setResizable(false);
-        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        super("Laboratorio 2");
         setContentPane(contentPane);
         pack();
-        setLocationRelativeTo(null);
 
         backButton.addActionListener(e -> {
             dispose();

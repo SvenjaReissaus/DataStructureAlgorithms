@@ -1,12 +1,13 @@
 package me.aed.lab5;
 
+import me.aed.shared.AbstractView;
 import me.aed.shared.Strings;
 
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public final class MainView extends JFrame {
+public final class MainView extends AbstractView {
     private final ArrayListFactory<Student> students = new ArrayListFactory<>();
     private final EmployeeListFactory employees = new EmployeeListFactory();
     private final ArrayListFactory<Integer> numbers = new ArrayListFactory<>();
@@ -40,11 +41,9 @@ public final class MainView extends JFrame {
     private JPanel lifoPane;
 
     public MainView() {
-        setResizable(false);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        super("Laboratorio 5");
         setContentPane(contentPane);
         pack();
-        setLocationRelativeTo(null);
         exercise1.addActionListener(e -> clear(1));
         exercise2.addActionListener(e -> clear(2));
         exercise3.addActionListener(e -> clear(3));
