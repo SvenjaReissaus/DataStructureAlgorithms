@@ -19,6 +19,7 @@ public class SearchView extends AbstractView {
         super("Laboratorio 2");
         setContentPane(contentPane);
         pack();
+        setLocationRelativeTo(null);
 
         backButton.addActionListener(e -> {
             dispose();

@@ -45,7 +45,7 @@ public final class Exercise3 extends JFrame {
     }
 
     record EmployeeFactory(Employee[] employees, int size) {
-        static final String HEADER = String.format("%-14s - %s - %s\n", "Nombre", "Cursos", "Promedio");
+        static final String HEADER = String.format("%-14s - %s - %s\n", "Nombre", "sexo", "Edad");
 
         /**
          * Retorna la cantidad de employees creados
@@ -181,9 +181,9 @@ public final class Exercise3 extends JFrame {
             try {
                 final String clientName = JOptionPane.showInputDialog("Introduzca el nombre del empleado");
                 if (clientName == null) return;
-                final String clientSex = JOptionPane.showInputDialog("Introduzca el telefono del empleado");
+                final String clientSex = JOptionPane.showInputDialog("Introduzca el Sexo del empleado");
                 if (clientSex == null) return;
-                final int age = Integer.parseInt(JOptionPane.showInputDialog("Introduzca el saldo del empleado"));
+                final int age = Integer.parseInt(JOptionPane.showInputDialog("Introduzca la edad del empleado"));
                 employees[next] = new Employee(clientName, clientSex, age);
                 created = true;
             } catch (NumberFormatException e) {

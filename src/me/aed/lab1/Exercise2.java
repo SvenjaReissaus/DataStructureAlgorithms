@@ -29,7 +29,7 @@ public final class Exercise2 extends JFrame {
         });
 
         optionCreate.addActionListener(e -> factory.create());
-        optionList.addActionListener(e -> factory.read_all());
+        optionList.addActionListener( e -> factory.read_all());
         optionDelete.addActionListener(e -> factory.delete());
         optionEdit.addActionListener(e -> factory.modify());
         optionShow.addActionListener(e -> factory.read());
@@ -50,7 +50,7 @@ public final class Exercise2 extends JFrame {
     }
 
     record ClientFactory(Client[] clients, int size) {
-        static final String HEADER = String.format("%-14s - %s - %s\n", "Nombre", "Cursos", "Promedio");
+        static final String HEADER = String.format("%-14s - %s - %s - %s\n", "Nombre", "Telefono", "Saldo", "Moroso");
 
         /**
          * Retorna la cantidad de clientes creados

@@ -16,6 +16,7 @@ public final class MainView extends AbstractView {
         super();
         setContentPane(contentPane);
         pack();
+        setLocationRelativeTo(null);
 
         back.addActionListener(e -> {
             dispose();

@@ -20,6 +20,7 @@ public class MainView extends AbstractView {
         super("Algortimos y Estructuras de Datos");
         setContentPane(contentPane);
         pack();
+        setLocationRelativeTo(null);
 
         lab1Button.addActionListener(e -> {
             dispose();
@@ -53,6 +54,6 @@ public class MainView extends AbstractView {
         addTooltip(lab3Button, resumen, "Pilas y Colas");
         addTooltip(lab4Button, resumen, "Recursividad");
         addTooltip(lab5Button, resumen, "Array List");
-        addTooltip(lab6Button, resumen, "");
+        addTooltip(lab6Button, resumen, "Arbol Binario");
     }
 }

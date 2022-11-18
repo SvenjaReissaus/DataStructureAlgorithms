@@ -20,6 +20,7 @@ public class MenuView extends AbstractView {
         super("Laboratorio 2");
         setContentPane(contentPane);
         pack();
+        setLocationRelativeTo(null);
 
         if (factory.isInitialized()) {
             sizeField.setText(String.valueOf(factory.getSize()));

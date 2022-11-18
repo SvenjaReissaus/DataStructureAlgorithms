@@ -40,15 +40,18 @@ public final class Exercise4 extends JFrame {
         pack();
     }
 
-    record Employee(String name, int age, String address, String sex, int years) {
+    record Employee(String name, String address, int age, String sex, int years) {
+
+
         @Override
         public String toString() {
-            return String.format("%-10s - %-10d - %-5s", name, age, sex);
+            return String.format("%-10s - %-10s - %-5d - %-5s - %-5s ", name, address, age, sex, years);
         }
+        //Nombre, Dirección, Edad, Sexo, Años de antigüedad
     }
 
     record EmployeeFactory(Employee[] employees, int size) {
-        static final String HEADER = String.format("%-14s - %s - %s\n", "Nombre", "Cursos", "Promedio");
+        static final String HEADER = String.format("%-14s - %s - %s - %s - %s\n", "Nombre", "Direccion", "Edad", "Sexo", "Años de antigüedad");
 
         int getSize() {
             int count = 0;
@@ -120,7 +123,7 @@ public final class Exercise4 extends JFrame {
                 // NPE fix
                 if (employees[i] != null && Objects.equals(employees[i].name, target)) {
                     final int age = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese la edad del empleado"));
-                    employees[i] = new Employee(employees[i].name, age, employees[i].address, employees[i].sex, employees[i].years); // Swap
+                    employees[i] = new Employee(employees[i].name, employees[i].address,employees[i].age, employees[i].sex, employees[i].years); // Swap
                     success("Se ha modificado el empleado");
                     break;
                 }
@@ -176,12 +179,13 @@ public final class Exercise4 extends JFrame {
             try {
                 final String name = JOptionPane.showInputDialog("Introduzca el nombre del empleado");
                 if (name == null) return;
-                final String sex = JOptionPane.showInputDialog("Introduzca el telefono del empleado");
-                if (sex == null) return;
-                final int age = Integer.parseInt(JOptionPane.showInputDialog("Introduzca el saldo del empleado"));
                 final String address = JOptionPane.showInputDialog("Introduzca la direccion del empleado");
+                if (address == null) return;
+                final int age = Integer.parseInt(JOptionPane.showInputDialog("Introduzca el saldo del empleado"));
+                if (age == 0) return;
+                final String sex = JOptionPane.showInputDialog("Introduzca el sexo del empleado");
                 final int years = Integer.parseInt(JOptionPane.showInputDialog("Introduzca los años de antiguedad del empleado"));
-                employees[next] = new Employee(name, age, sex, address, years);
+                employees[next] = new Employee(name, address, age, sex, years);
                 created = true;
             } catch (NumberFormatException e) {
                 error("Se debe proveer un valor numerico");

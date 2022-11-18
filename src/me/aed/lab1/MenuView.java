@@ -17,6 +17,7 @@ public final class MenuView extends AbstractView { // extends AbstractView es la
         super("Laboratorio 1"); // podemos reemplazar 3 lineas de codigo por un super(), incluso incluir un titulo para la vista super("Mi titulo")
         setContentPane(contentPane);
         pack();
+        setLocationRelativeTo(null);
 
         backButton.addActionListener(e -> {
             dispose();
@@ -46,6 +47,9 @@ public final class MenuView extends AbstractView { // extends AbstractView es la
         pack();
         // addTooltip(variable que contineue al boton que se va a observar, variable que contineue el JLabel que se va a actualizar, texto como string);
         addTooltip(ex1Button, resumen, "En una escuela se tienen que almacenar en arreglos los siguientes datos");
-        addTooltip(ex2Button, resumen, "No se que sigue");
+        addTooltip(ex2Button, resumen, "Una empresa registra para cada uno de sus clientes ");
+        addTooltip(ex3Button, resumen, "El departamento de personal de una empresa necesita almacenar");
+        addTooltip(ex4Button, resumen, "Una compañía necesita almacenar en arreglos la siguiente información");
+        
     }
 }

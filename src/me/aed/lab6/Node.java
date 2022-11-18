@@ -21,15 +21,15 @@ public final class Node<T> {
 
     public LinkedHashSet<T> traverse(final TraverseOrder order) {
         final LinkedHashSet<T> values = new LinkedHashSet<>();
-        inOrderRecursive(order, values); // node@0x00000000
+        Traverse(order, values); // node@0x00000000
         return values;
     }
 
-    private void inOrderRecursive(final TraverseOrder order, final LinkedHashSet<T> set) {
+    private void Traverse(final TraverseOrder order, final LinkedHashSet<T> set) {
         if (order.equals(TraverseOrder.PRE_ORDER)) set.add(data);
-        if (left != null) left.inOrderRecursive(order, set);
+        if (left != null) left.Traverse(order, set);
         if (order.equals(TraverseOrder.IN_ORDER)) set.add(data);
-        if (right != null) right.inOrderRecursive(order, set);
+        if (right != null) right.Traverse(order, set);
         if (order.equals(TraverseOrder.POST_ORDER)) set.add(data);
     }
 

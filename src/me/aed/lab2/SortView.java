@@ -24,6 +24,7 @@ public class SortView extends AbstractView {
         super("Laboratorio 2");
         setContentPane(contentPane);
         pack();
+        setLocationRelativeTo(null);
 
         backButton.addActionListener(e -> {
             dispose();
