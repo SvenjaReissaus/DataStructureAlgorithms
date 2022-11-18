@@ -17,6 +17,9 @@ public final class MainView extends AbstractView {
         setContentPane(contentPane);
         pack();
         setLocationRelativeTo(null);
+        //make the window automatically resize to fit the content
+        setResizable(true);
+
 
         back.addActionListener(e -> {
             dispose();
@@ -25,5 +28,6 @@ public final class MainView extends AbstractView {
         show.addActionListener(e -> new ResultView<>(root).setVisible(true));
         tree.setLayout(new GridLayout(1, 1));
         tree.add(root.render(this));
+
     }
 }

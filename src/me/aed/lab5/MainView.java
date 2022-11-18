@@ -4,6 +4,10 @@ import me.aed.shared.AbstractView;
 import me.aed.shared.Strings;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -24,7 +28,7 @@ public final class MainView extends AbstractView {
     private JPanel operationalPane;
     private JButton cleanList;
     private JButton exitList;
-    private JList list2;
+    private JList<Object> list2;
     private JList list3;
     private JList idList;
     private JLabel listHeader1;
@@ -39,11 +43,16 @@ public final class MainView extends AbstractView {
     private JPanel actions;
     private JList lifoList;
     private JPanel lifoPane;
+    private JButton regresarButton;
+    private JLabel resumen;
 
     public MainView() {
         super("Laboratorio 5");
         setContentPane(contentPane);
+        //make it resizeble
+        setResizable(true);
         pack();
+        setLocationRelativeTo(null);
         exercise1.addActionListener(e -> clear(1));
         exercise2.addActionListener(e -> clear(2));
         exercise3.addActionListener(e -> clear(3));
@@ -71,11 +80,61 @@ public final class MainView extends AbstractView {
                     Double.parseDouble(JOptionPane.showInputDialog("Introduzca el salario del empleado"))
             ));
             else if (current == 4) strings.add(JOptionPane.showInputDialog("Introduzca una cadena de texto"));
+
             else if (current == 5)
                 numbers.add(Strings.parseInt("Introduzca un numero entero"));
             render();
         });
         exitList.addActionListener(e -> clear(0));
+        regresarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                new me.aed.MainView().setVisible(true);
+            }
+        });
+        exercise1.addMouseListener(new MouseAdapter() {
+           //use is on the button, show message in resumen
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                resumen.setText("Escribir un programa que llene una lista de estudiantes de segundo año que llevan matemática básica ");
+            }
+        });
+
+        exercise2.addMouseListener(new MouseAdapter() {
+            //use is on the button, show message in resumen
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                resumen.setText("Escriba un programa que, dada una lista que contiene números enteros, la divida en dos listas independientes ");
+            }
+        });
+
+        exercise3.addMouseListener(new MouseAdapter() {
+            //use is on the button, show message in resumen
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                resumen.setText("Una empresa necesita almacenar el nombre, numero de empleado y salario de un grupo de empleados y calcular la nómina total ");
+            }
+        });
+        exercise4.addMouseListener(new MouseAdapter() {
+            //use is on the button, show message in resumen
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                resumen.setText("Escribir un programa utilizando ArrayList que represente una pila ");
+            }
+        });
+        exercise5.addMouseListener(new MouseAdapter() {
+            //use is on the button, show message in resumen
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                resumen.setText("Escribir un programa que cree una lista de números positivos y que de esta lista cree dos más");
+            }
+        });
     }
 
     private void render() {
@@ -121,7 +180,10 @@ public final class MainView extends AbstractView {
                 else values2.add(value);
             flatValues1.setText(Arrays.toString(values1.toArray()));
             flatValues2.setText(Arrays.toString(values2.toArray()));
-        } else if (current == 4) lifoList.setListData(strings.get().toArray());
+        } else if (current == 4) {
+            list1.setListData(strings.get().toArray());
+        }
+
     }
 
     private void clear(final int next) {
@@ -146,6 +208,10 @@ public final class MainView extends AbstractView {
         } else if (current == 3) {
             listHeader2.setText("Numero");
             listHeader3.setText("Salario");
+        } else if (current == 4) {
+            listHeader1.setText("Pila");
+            listHeader2.setText("");
+            listHeader3.setText("");
         } else if (current == 5) {
             flatList1.setText("Mayores a 10");
             flatList2.setText("Menores a 10");
@@ -156,9 +222,13 @@ public final class MainView extends AbstractView {
             flatList2.setText("");
         }
         lifoList.setVisible(next == 4);
-        operationalPane.setVisible(next == 1 || next == 3);
+        operationalPane.setVisible(next == 1 || next == 3 || next == 4);
         flats.setVisible(next == 2 || next == 5);
         actions.setVisible(next != 0);
         render();
+    }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
     }
 }

@@ -17,6 +17,7 @@ public final class MainView extends AbstractView {
         super("Laboratorio 4");
         setContentPane(contentPane);
         pack();
+        setLocationRelativeTo(null);
 
         continueButton.addActionListener(e -> {
             switch (options.getSelectedIndex()) {

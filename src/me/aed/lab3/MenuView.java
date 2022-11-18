@@ -19,6 +19,7 @@ public class MenuView extends AbstractView {
         super("Laboratorio 3");
         setContentPane(contentPane);
         pack();
+        setLocationRelativeTo(null);
 
         backButton.addActionListener(e -> {
             dispose();
